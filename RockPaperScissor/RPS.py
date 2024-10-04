@@ -4,7 +4,8 @@
 
 import random
 import sys
-import tkinter
+from tkinter import *
+from tkinter import ttk
 
 #The game is in the function
 def RockPaperScissors():
@@ -69,7 +70,15 @@ def RockPaperScissors():
         #Prints the score for the user to see the score
         print(f"Current Score:\nUser:{userScore}   Computer:{compScore}")
     
+root = Tk()
+root.title("Rock Paper Scissors")
+mainframe = ttk.Frame(root, padding="3 3 12 12")
+mainframe.grid(column=3, row=2, sticky=(N, W, E, S))
+label = ttk.Label(mainframe, text="Let's play Rock Paper Scissor!!\nWhat do you pick?")
+label.grid(column=1,row=1,sticky=(N))
+user = StringVar()
+user_entry = ttk.Entry(mainframe, width=15, textvariable=user)
+user_entry.grid(column=3, row=2, sticky=(S))
 
-
-
+root.mainloop()
 
