@@ -8,7 +8,7 @@ from tkinter import *
 from tkinter import ttk
 
 #The game is in the function
-def RockPaperScissors():
+def RockPaperScissors(user):
     print("Let's Play Rock, Paper, Scissors!\nThe rules are as follows:\nRock beats Scissors\nPaper beats Rock\nScissors beats Paper\nWhen you want to leave type exit")
     #Initialising some variables used in the loop
     i = True
@@ -19,7 +19,7 @@ def RockPaperScissors():
     #Main loop of game
     while(i == True):
         #Get the user input first
-        user = input("3. 2. 1.\nUser:")
+        #user = input("3. 2. 1.\nUser:")
 
         #1 will be rock. 2 will be paper. 3 will be scissors
         #Generates Computer Answer
@@ -72,13 +72,14 @@ def RockPaperScissors():
     
 root = Tk()
 root.title("Rock Paper Scissors")
-mainframe = ttk.Frame(root, padding="3 3 12 12")
+mainframe = ttk.Frame(root, padding="3 3 12 12", relief=RIDGE)
 mainframe.grid(column=3, row=2, sticky=(N, W, E, S))
 label = ttk.Label(mainframe, text="Let's play Rock Paper Scissor!!\nWhat do you pick?")
-label.grid(column=1,row=1,sticky=(N))
+label.grid(column=1,row=1,columnspan=2)
 user = StringVar()
-user_entry = ttk.Entry(mainframe, width=15, textvariable=user)
-user_entry.grid(column=3, row=2, sticky=(S))
+user_entry = ttk.Entry(mainframe, width=15, textvariable=user, justify=CENTER)
+user_entry.grid(column=3, row=2)
 
 root.mainloop()
 
+RockPaperScissors(user)
