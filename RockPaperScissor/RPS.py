@@ -70,6 +70,11 @@ def RockPaperScissors():
     #Prints the score for the user to see the score
     score_text = f"User:{userScore}   Computer: {compScore}"
     label_score.config(text=score_text)
+    #updates the computers choise
+    comp_text = "Computer picked "+computer
+    label_comp.config(text=comp_text)
+    
+
 
 #basic GUI initialisation
 root = Tk()
@@ -83,7 +88,8 @@ mainframe.grid(column=3, row=6, sticky=N+S+E+W)
 label_lp = ttk.Label(mainframe, text="Let's play!!")
 label_lp.grid(column=1,row=1,columnspan=3)
 
-label_rps = ttk.Label(mainframe, text="Rock, Paper Scissors?")
+#general rps statement
+label_rps = ttk.Label(mainframe, text="Rock, Paper, Scissors?")
 label_rps.grid(column=1,row=2,columnspan=3)
 
 #will manually tally score this side of the funtion
@@ -91,16 +97,20 @@ score_text = f"User:{userScore}   Computer: {compScore}"
 label_score = ttk.Label(mainframe, text=score_text)
 label_score.grid(column=1,row=3,columnspan=3)
 
+#user entry box
 user = StringVar()
 user_entry = ttk.Entry(mainframe, width=15, textvariable=user, justify=CENTER)
 user_entry.grid(column=2, row=4)
 
+#confirm play button
 play = ttk.Button(mainframe, text="Play", command=RockPaperScissors)
 play.grid(column=3,row=4)
 
-label_comp = ttk.Label(mainframe, text="Computer Picked: ")
+#computer pick displayed
+label_comp = ttk.Label(mainframe, text="")
 label_comp.grid(column=1,row=5,columnspan=3)
 
+#display if user won/lost or if it was a draw
 label_wl = ttk.Label(mainframe, text="WIN/LOSE/DRAW")
 label_wl.grid(column=1,row=6,columnspan=3)
 
