@@ -17,69 +17,72 @@ def RockPaperScissors(user):
     userScore = 0
 
     #Main loop of game
-    while(i == True):
-        #Get the user input first
-        #user = input("3. 2. 1.\nUser:")
+    #while(i == True):
+    #Get the user input first
+    #user = input("3. 2. 1.\nUser:")
 
-        #1 will be rock. 2 will be paper. 3 will be scissors
-        #Generates Computer Answer
-        computerNum = random.randint(1,3)
-        if computerNum == 1:
-            computer == "Rock"
-        elif computerNum == 2:
-            computer = "Paper"
-        else:
-            computer = "Scissors"
+    #1 will be rock. 2 will be paper. 3 will be scissors
+    #Generates Computer Answer
+    computerNum = random.randint(1,3)
+    if computerNum == 1:
+        computer == "Rock"
+    elif computerNum == 2:
+        computer = "Paper"
+    else:
+        computer = "Scissors"
 
-        print("Computer: "+ computer)
+    print("Computer: "+ computer)
 
-        #Decides the winner based on rules
-        if user == "exit":
-            #close the game     ###THIS DOESN'T CURRENTLY WORK###
-            sys.exit
-        elif user == "rock" or user == "Rock":  #user vs comp
-            if computerNum == 1:                #rock vs rock
-                print("Draw")
-            elif computerNum == 2:              #rock vs paper
-                print("You Lose")
-                compScore=compScore+1
-            else:                               #rock vs scissor
-                print("You Win")
-                userScore=userScore+1
-        elif user == "paper" or user == "Paper":#user vs comp
-            if computerNum == 1:                #Paper vs rock
-                print("You Win")
-                userScore=userScore+1
-            elif computerNum == 2:              #Paper vs paper
-                print("Draw")
-            else:                               #Paper vs scissor
-                print("You Lose")
-                compScore=compScore+1
-        elif user == "scissors" or user == "Scissors" or user == "scissor" or user == "Scissor":  
-            if computerNum == 1:                #Scissor vs rock
-                print("You Lose")
-                compScore=compScore+1
-            elif computerNum == 2:              #Scissor vs paper
-                print("You Win")
-                userScore=userScore+1
-            else:                               #Scissor vs scissor
-                print("Draw")
-        #Anything other than the expected word answers
-        else:   
-            print("Error Input was not expected. Please try again")
-        #Prints the score for the user to see the score
-        print(f"Current Score:\nUser:{userScore}   Computer:{compScore}")
-    
+    #Decides the winner based on rules
+    if user == "exit":
+        #close the game     ###THIS DOESN'T CURRENTLY WORK###
+        sys.exit
+    elif user == "rock" or user == "Rock":  #user vs comp
+        if computerNum == 1:                #rock vs rock
+            print("Draw")
+        elif computerNum == 2:              #rock vs paper
+            print("You Lose")
+            compScore=compScore+1
+        else:                               #rock vs scissor
+            print("You Win")
+            userScore=userScore+1
+    elif user == "paper" or user == "Paper":#user vs comp
+        if computerNum == 1:                #Paper vs rock
+            print("You Win")
+            userScore=userScore+1
+        elif computerNum == 2:              #Paper vs paper
+            print("Draw")
+        else:                               #Paper vs scissor
+            print("You Lose")
+            compScore=compScore+1
+    elif user == "scissors" or user == "Scissors" or user == "scissor" or user == "Scissor":  
+        if computerNum == 1:                #Scissor vs rock
+            print("You Lose")
+            compScore=compScore+1
+        elif computerNum == 2:              #Scissor vs paper
+            print("You Win")
+            userScore=userScore+1
+        else:                               #Scissor vs scissor
+            print("Draw")
+    #Anything other than the expected word answers
+    else:   
+        print(f"Error Input was not expected. You put {user} Please try again")
+    #Prints the score for the user to see the score
+    print(f"Current Score:\nUser:{userScore}   Computer:{compScore}")
+
 root = Tk()
 root.title("Rock Paper Scissors")
+
 mainframe = ttk.Frame(root, padding="3 3 12 12", relief=RIDGE)
 mainframe.grid(column=3, row=2, sticky=(N, W, E, S))
+
 label = ttk.Label(mainframe, text="Let's play Rock Paper Scissor!!\nWhat do you pick?")
 label.grid(column=1,row=1,columnspan=2)
+
 user = StringVar()
 user_entry = ttk.Entry(mainframe, width=15, textvariable=user, justify=CENTER)
-user_entry.grid(column=3, row=2)
-
+user_entry.grid(column=2, row=2)
+play = ttk.Button(mainframe, text="Play", command=RockPaperScissors(user.get()))
+play.grid(column=3,row=2)
 root.mainloop()
 
-RockPaperScissors(user)
