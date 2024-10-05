@@ -30,13 +30,11 @@ def RockPaperScissors():
     else:
         computer = "Scissors"
 
-    print("Computer: "+ computer)
-
     #Decides the winner based on rules
     if userText == "exit":
         #close the game     ###THIS DOESN'T CURRENTLY WORK###
         sys.exit
-    elif userText.lower() == "rock":          #user vs comp
+    elif userText.lower() == "rock":        #user vs comp
         if computerNum == 1:                #rock vs rock
             label_wl.config(text="It was a draw!")
         elif computerNum == 2:              #rock vs paper
@@ -45,7 +43,7 @@ def RockPaperScissors():
         else:                               #rock vs scissor
             label_wl.config(text="You Won!")
             userScore=userScore+1
-    elif userText.lower() == "paper":         #user vs comp
+    elif userText.lower() == "paper":       #user vs comp
         if computerNum == 1:                #Paper vs rock
             label_wl.config(text="You Won!")
             userScore=userScore+1
@@ -79,11 +77,11 @@ def RockPaperScissors():
 root = Tk()
 root.title("Rock Paper Scissors")
 
-
+#main frame set up
 mainframe = ttk.Frame(root, relief=RIDGE)
 mainframe.grid(column=3, row=6, sticky=N+S+E+W)
 
-
+#general label
 label_lp = ttk.Label(mainframe, text="Let's play!!")
 label_lp.grid(column=1,row=1,columnspan=3)
 
