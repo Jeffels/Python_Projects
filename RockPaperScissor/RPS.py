@@ -16,7 +16,7 @@ def RockPaperScissors():
     print("Let's Play Rock, Paper, Scissors!\nThe rules are as follows:\nRock beats Scissors\nPaper beats Rock\nScissors beats Paper\nWhen you want to leave type exit")
     #Initialising some variables
     global computer, userScore, compScore 
-    
+
     #Main loop of game
     #Get the user input first
     userText = user.get()
@@ -37,7 +37,7 @@ def RockPaperScissors():
     if userText == "exit":
         #close the game     ###THIS DOESN'T CURRENTLY WORK###
         sys.exit
-    elif userText == "rock" or userText == "Rock":  #user vs comp
+    elif userText.lower() == "rock":          #user vs comp
         if computerNum == 1:                #rock vs rock
             print("Draw")
         elif computerNum == 2:              #rock vs paper
@@ -46,7 +46,7 @@ def RockPaperScissors():
         else:                               #rock vs scissor
             print("You Win")
             userScore=userScore+1
-    elif userText == "paper" or userText == "Paper":#user vs comp
+    elif userText.lower() == "paper":         #user vs comp
         if computerNum == 1:                #Paper vs rock
             print("You Win")
             userScore=userScore+1
@@ -55,7 +55,7 @@ def RockPaperScissors():
         else:                               #Paper vs scissor
             print("You Lose")
             compScore=compScore+1
-    elif userText == "scissors" or userText == "Scissors" or userText == "scissor" or userText == "Scissor":  
+    elif userText.lower() == "scissors"or userText.lower == "scissor":  
         if computerNum == 1:                #Scissor vs rock
             print("You Lose")
             compScore=compScore+1
