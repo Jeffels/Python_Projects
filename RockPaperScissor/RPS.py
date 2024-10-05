@@ -7,17 +7,17 @@ import sys
 from tkinter import *
 from tkinter import ttk
 
+computer = ""
+compScore = 0
+userScore = 0
+
 #The game is in the function
 def RockPaperScissors():
     print("Let's Play Rock, Paper, Scissors!\nThe rules are as follows:\nRock beats Scissors\nPaper beats Rock\nScissors beats Paper\nWhen you want to leave type exit")
-    #Initialising some variables used in the loop
-    i = True
-    computer = ""
-    compScore = 0
-    userScore = 0
-
+    #Initialising some variables
+    global computer, userScore, compScore 
+    
     #Main loop of game
-    #while(i == True):
     #Get the user input first
     userText = user.get()
 
@@ -25,7 +25,7 @@ def RockPaperScissors():
     #Generates Computer Answer
     computerNum = random.randint(1,3)
     if computerNum == 1:
-        computer == "Rock"
+        computer = "Rock"
     elif computerNum == 2:
         computer = "Paper"
     else:
@@ -68,16 +68,16 @@ def RockPaperScissors():
     else:   
         print(f"Error Input was not expected. You put {userText} Please try again")
     #Prints the score for the user to see the score
-    print(f"Current Score:\nUser:{userScore}   Computer:{compScore}")
-    ##add a return statment here of who won
+    score_text = f"User:{userScore}   Computer: {compScore}"
+    label_score.config(text=score_text)
 
 #basic GUI initialisation
 root = Tk()
 root.title("Rock Paper Scissors")
 
 
-mainframe = ttk.Frame(root, padding="6 6 24 24", relief=RIDGE)
-mainframe.grid(column=3, row=6, sticky=(N, W, E, S))
+mainframe = ttk.Frame(root, relief=RIDGE)
+mainframe.grid(column=3, row=6, sticky=N+S+E+W)
 
 
 label_lp = ttk.Label(mainframe, text="Let's play!!")
@@ -87,15 +87,15 @@ label_rps = ttk.Label(mainframe, text="Rock, Paper Scissors?")
 label_rps.grid(column=1,row=2,columnspan=3)
 
 #will manually tally score this side of the funtion
-
-label_score = ttk.Label(mainframe, text="Score:")
+score_text = f"User:{userScore}   Computer: {compScore}"
+label_score = ttk.Label(mainframe, text=score_text)
 label_score.grid(column=1,row=3,columnspan=3)
 
 user = StringVar()
 user_entry = ttk.Entry(mainframe, width=15, textvariable=user, justify=CENTER)
 user_entry.grid(column=2, row=4)
 
-play = ttk.Button(mainframe, text="Play", command=RockPaperScissors())
+play = ttk.Button(mainframe, text="Play", command=RockPaperScissors)
 play.grid(column=3,row=4)
 
 label_comp = ttk.Label(mainframe, text="Computer Picked: ")
