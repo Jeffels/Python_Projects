@@ -8,7 +8,7 @@ from tkinter import *
 from tkinter import ttk
 
 #The game is in the function
-def RockPaperScissors(user):
+def RockPaperScissors():
     print("Let's Play Rock, Paper, Scissors!\nThe rules are as follows:\nRock beats Scissors\nPaper beats Rock\nScissors beats Paper\nWhen you want to leave type exit")
     #Initialising some variables used in the loop
     i = True
@@ -19,7 +19,7 @@ def RockPaperScissors(user):
     #Main loop of game
     #while(i == True):
     #Get the user input first
-    #user = input("3. 2. 1.\nUser:")
+    userText = user.get()
 
     #1 will be rock. 2 will be paper. 3 will be scissors
     #Generates Computer Answer
@@ -34,10 +34,10 @@ def RockPaperScissors(user):
     print("Computer: "+ computer)
 
     #Decides the winner based on rules
-    if user == "exit":
+    if userText == "exit":
         #close the game     ###THIS DOESN'T CURRENTLY WORK###
         sys.exit
-    elif user == "rock" or user == "Rock":  #user vs comp
+    elif userText == "rock" or userText == "Rock":  #user vs comp
         if computerNum == 1:                #rock vs rock
             print("Draw")
         elif computerNum == 2:              #rock vs paper
@@ -46,7 +46,7 @@ def RockPaperScissors(user):
         else:                               #rock vs scissor
             print("You Win")
             userScore=userScore+1
-    elif user == "paper" or user == "Paper":#user vs comp
+    elif userText == "paper" or userText == "Paper":#user vs comp
         if computerNum == 1:                #Paper vs rock
             print("You Win")
             userScore=userScore+1
@@ -55,7 +55,7 @@ def RockPaperScissors(user):
         else:                               #Paper vs scissor
             print("You Lose")
             compScore=compScore+1
-    elif user == "scissors" or user == "Scissors" or user == "scissor" or user == "Scissor":  
+    elif userText == "scissors" or userText == "Scissors" or userText == "scissor" or userText == "Scissor":  
         if computerNum == 1:                #Scissor vs rock
             print("You Lose")
             compScore=compScore+1
@@ -66,23 +66,43 @@ def RockPaperScissors(user):
             print("Draw")
     #Anything other than the expected word answers
     else:   
-        print(f"Error Input was not expected. You put {user} Please try again")
+        print(f"Error Input was not expected. You put {userText} Please try again")
     #Prints the score for the user to see the score
     print(f"Current Score:\nUser:{userScore}   Computer:{compScore}")
+    ##add a return statment here of who won
 
+#basic GUI initialisation
 root = Tk()
 root.title("Rock Paper Scissors")
 
-mainframe = ttk.Frame(root, padding="3 3 12 12", relief=RIDGE)
-mainframe.grid(column=3, row=2, sticky=(N, W, E, S))
 
-label = ttk.Label(mainframe, text="Let's play Rock Paper Scissor!!\nWhat do you pick?")
-label.grid(column=1,row=1,columnspan=2)
+mainframe = ttk.Frame(root, padding="6 6 24 24", relief=RIDGE)
+mainframe.grid(column=3, row=6, sticky=(N, W, E, S))
+
+
+label_lp = ttk.Label(mainframe, text="Let's play!!")
+label_lp.grid(column=1,row=1,columnspan=3)
+
+label_rps = ttk.Label(mainframe, text="Rock, Paper Scissors?")
+label_rps.grid(column=1,row=2,columnspan=3)
+
+#will manually tally score this side of the funtion
+
+label_score = ttk.Label(mainframe, text="Score:")
+label_score.grid(column=1,row=3,columnspan=3)
 
 user = StringVar()
 user_entry = ttk.Entry(mainframe, width=15, textvariable=user, justify=CENTER)
-user_entry.grid(column=2, row=2)
-play = ttk.Button(mainframe, text="Play", command=RockPaperScissors(user.get()))
-play.grid(column=3,row=2)
+user_entry.grid(column=2, row=4)
+
+play = ttk.Button(mainframe, text="Play", command=RockPaperScissors())
+play.grid(column=3,row=4)
+
+label_comp = ttk.Label(mainframe, text="Computer Picked: ")
+label_comp.grid(column=1,row=5,columnspan=3)
+
+label_wl = ttk.Label(mainframe, text="WIN/LOSE/DRAW")
+label_wl.grid(column=1,row=6,columnspan=3)
+
 root.mainloop()
 
