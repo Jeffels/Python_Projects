@@ -33,7 +33,7 @@ def RockPaperScissors():
     #Decides the winner based on rules
     if userText == "exit":
         #close the game     ###THIS DOESN'T CURRENTLY WORK###
-        sys.exit
+        sys.exit()
     elif userText.lower() == "rock":        #user vs comp
         if computerNum == 1:                #rock vs rock
             label_wl.config(text="It was a draw!")
@@ -52,7 +52,7 @@ def RockPaperScissors():
         else:                               #Paper vs scissor
             label_wl.config(text="Computer Won!")
             compScore=compScore+1
-    elif userText.lower() == "scissors"or userText.lower == "scissor":  
+    elif userText.lower() == "scissors"or userText.lower() == "scissor":  
         if computerNum == 1:                #Scissor vs rock
             label_wl.config(text="Computer Won!")
             compScore=compScore+1
