@@ -13,7 +13,6 @@ userScore = 0
 
 #The game is in the function
 def RockPaperScissors():
-    print("Let's Play Rock, Paper, Scissors!\nThe rules are as follows:\nRock beats Scissors\nPaper beats Rock\nScissors beats Paper\nWhen you want to leave type exit")
     #Initialising some variables
     global computer, userScore, compScore 
 
@@ -39,41 +38,41 @@ def RockPaperScissors():
         sys.exit
     elif userText.lower() == "rock":          #user vs comp
         if computerNum == 1:                #rock vs rock
-            print("Draw")
+            label_wl.config(text="It was a draw!")
         elif computerNum == 2:              #rock vs paper
-            print("You Lose")
+            label_wl.config(text="Computer Won!")
             compScore=compScore+1
         else:                               #rock vs scissor
-            print("You Win")
+            label_wl.config(text="You Won!")
             userScore=userScore+1
     elif userText.lower() == "paper":         #user vs comp
         if computerNum == 1:                #Paper vs rock
-            print("You Win")
+            label_wl.config(text="You Won!")
             userScore=userScore+1
         elif computerNum == 2:              #Paper vs paper
-            print("Draw")
+            label_wl.config(text="It was a draw!")
         else:                               #Paper vs scissor
-            print("You Lose")
+            label_wl.config(text="Computer Won!")
             compScore=compScore+1
     elif userText.lower() == "scissors"or userText.lower == "scissor":  
         if computerNum == 1:                #Scissor vs rock
-            print("You Lose")
+            label_wl.config(text="Computer Won!")
             compScore=compScore+1
         elif computerNum == 2:              #Scissor vs paper
-            print("You Win")
+            label_wl.config(text="You Won!")
             userScore=userScore+1
         else:                               #Scissor vs scissor
-            print("Draw")
+            label_wl.config(text="It was a draw!")
     #Anything other than the expected word answers
     else:   
-        print(f"Error Input was not expected. You put {userText} Please try again")
+        label_wl.config(text=f"Error Input was not expected. You put '{userText}'\nPlease try again")
     #Prints the score for the user to see the score
     score_text = f"User:{userScore}   Computer: {compScore}"
     label_score.config(text=score_text)
     #updates the computers choise
     comp_text = "Computer picked "+computer
     label_comp.config(text=comp_text)
-    
+
 
 
 #basic GUI initialisation
